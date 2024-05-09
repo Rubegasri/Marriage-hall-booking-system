@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decoration Services</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Decoration Services</h1>
+  
+  <!-- Display decoration data -->
+  <div id="decoration-list">
+    <% decorations.forEach(decoration => { %>
+      <div class="decoration-item">
+        <h2><%= decoration.title %></h2>
+        <p><%= decoration.description %></p>
+        <!-- You can include more details here if needed -->
+        <form action="/admin/decorations/update/<%= decoration._id %>" method="post">
+          <input type="text" name="title" value="<%= decoration.title %>" placeholder="Title">
+          <input type="text" name="description" value="<%= decoration.description %>" placeholder="Description">
+          <button type="submit">Update</button>
+        </form>
+        <form action="/admin/decorations/delete/<%= decoration._id %>" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+
+  <!-- Add new decoration form -->
+  <h2>Add New Decoration</h2>
+  <form action="/admin/decorations/add" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="description" placeholder="Description">
+    <button type="submit">Add Decoration</button>
+  </form>
+</body>
+</html>

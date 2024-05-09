@@ -1,0 +1,299 @@
+body{
+  background-color: #090909;
+}
+#hero {
+   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('home.jpg');
+   background-size: cover;
+   background-position: center;
+   height: 150vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+ }
+ 
+ .hero-content {
+   color: #fff;
+ }
+ 
+ #gallery {
+   margin-top: 30px;
+ }
+ 
+ /* Add more styles as needed */
+ /* styles.css */
+
+/* Add your CSS styles here */
+.navbar {
+  position: fixed; /* Navbar is fixed at the top */
+  top: 0; /* Navbar starts from the top */
+  left: 0; /* Navbar starts from the left */
+  width: 100%; /* Navbar spans the full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Decreased padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* background: #f2c7aa; Lighter background */
+  color: #fbf9f9; /* Dark text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1000; /* Ensure navbar appears above other content */
+}
+
+.nav-logo p {
+  color: #f1efef;
+  font-size: 20px; /* Decreased font size */
+  font-weight: 700;
+  margin: 0; /* Remove default margin */
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0; /* Remove default margin */
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #f3eded; /* Dark text */
+  font-size: 20px; /* Decreased font size */
+  font-weight: 500;
+  padding: 8px 12px; /* Decreased padding */
+  border-radius: 5px; /* Add rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background on hover */
+}
+
+.nav-menu hr {
+  border: none;
+  width: 60%;
+  height: 2px;
+  background-color: #e74c3c;
+  margin: 0; /* Remove default margin */
+}
+
+.nav-login button {
+  width: 120px; /* Decreased button width */
+  height: 40px; /* Decreased button height */
+  border: none;
+  border-radius: 20px;
+  color: #090909;
+  font-size: 16px; /* Decreased font size */
+  font-weight: 600;
+  background-color: #fcf9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-login button:hover {
+  background-color: #edebeb;
+}
+
+
+ 
+ html,body{
+    width: 100%;
+    height: 100%;
+    background: #000000
+  }
+  
+  .container{
+    padding: 75px 0;
+    margin: 0 auto;
+    width: 1140px;
+    text-align: center;
+  }
+  
+  h1{
+    position: relative;
+    margin-bottom: 45px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 44px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  
+  .gallery-wrap {
+    display:inline-flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80vh;
+  }
+  
+  .item {
+    flex: 1;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    transition: flex 0.8s ease;
+    background-color: #090909;
+    
+    &:hover{
+      flex: 7;
+    }
+  }
+  
+  .item-1 { 
+    background-image: url('https://media.istockphoto.com/id/831050036/photo/hindu-wedding.jpg?s=612x612&w=0&k=20&c=b6Yz3XPnFWzvp5uMH_Cfd2MhBPmNFgKTZ5lLvVMFl7Q=');
+  }
+  
+  .item-2 { 
+    background-image: url('https://govivah.com/blog/wp-content/uploads/2020/12/WhatsApp-Image-2020-12-26-at-11.29.30-PM.jpeg');
+  }
+  
+  .item-3 { 
+    background-image: url('https://sriramcatering.in/wp-content/uploads/2023/11/New-Project-3.webp');
+  }
+  
+  .item-4 { 
+    background-image: url('https://www.babulcaterer.com/wp-content/uploads/2023/06/bengali-wedding.jpg');
+  }
+  
+  .item-5 { 
+    background-image: url('https://image.wedmegood.com/resized/450X/uploads/project/82707/1585566648_Siri_GM_33.jpg');
+  }
+  
+  .social{
+    position: absolute;
+    right: 35px;
+    bottom: 0;
+    
+    img{
+      display: block;
+      width: 50px;
+    }
+  }
+  h1{
+    font-size:25px;
+    text-align: left;
+    text-transform:capitalize;
+}
+body {
+  background-color: #000000; /* black background */
+  color: #fff; /* text color */
+}
+
+.service-box{
+  position: relative;
+  overflow: hidden;
+  margin-bottom:20px;
+  perspective:1500px;
+  -webkit-perspective:1500px;
+  height: 500px;
+  width: 250px;
+}
+
+.service-icon{
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  text-align: center;
+  transition: all .5s ease;
+}
+
+.service-content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 100%;
+  height: 220px;
+  padding: 20px;
+  text-align: center;
+  transition: all .5s ease;
+  background-color: #474747;
+  backface-visibility:hidden;
+  transform-style: preserve-3d;
+  -webkit-transform: translateY(110px) rotateX(-90deg);
+  -moz-transform: translateY(110px) rotateX(-90deg);
+  -ms-transform: translateY(110px) rotateX(-90deg);
+  -o-transform: translateY(110px) rotateX(-90deg);
+  transform: translateY(110px) rotateX(-90deg);
+}
+
+.service-box .service-icon .front-content{
+  position: relative;
+  top:80px;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.service-box .service-icon .front-content i {
+  font-size: 28px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.service-box .service-icon .front-content h3 {
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.service-box .service-content h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom:10px;
+  text-transform: uppercase;
+}
+
+.service-box .service-content p {
+  font-size: 13px;
+  color: #b1b1b1;
+  margin:0;
+}
+
+.yellow{background-color: #ffc000;}
+.orange{background-color: #fc7f0c;}
+.red{background-color: #e84b3a;}
+.grey{background-color: #957e54;}
+
+.service-box:hover .service-icon{
+  opacity: 0;
+  -webkit-transform: translateY(-110px) rotateX(90deg);
+  -moz-transform: translateY(-110px) rotateX(90deg);
+  -ms-transform: translateY(-110px) rotateX(90deg);
+  -o-transform: translateY(-110px) rotateX(90deg);
+  transform: translateY(-110px) rotateX(90deg);
+}
+
+.service-box:hover .service-content {
+  opacity: 1;
+  -webkit-transform: rotateX(0);
+  -moz-transform: rotateX(0);
+  -ms-transform: rotateX(0);
+  -o-transform: rotateX(0);
+  transform: rotateX(0);
+}
+
+/* contact styles */
+
+#calendar {
+  display: none;
+  color: #fff;
+  /* Your calendar styles here */
+}
+.calbut{
+  background-color: chocolate;
+  color: #b1b1b1;
+  font-size:3.0vh;
+  align-items: center;
+  /* padding: 10%; */
+  position: sticky;
+  text-align: center;
+}
+
+/* ......//about us//...... */
+

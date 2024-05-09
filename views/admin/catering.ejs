@@ -1,0 +1,55 @@
+<!-- catering.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catering Services</title>
+  <style>
+    /* Styles */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Catering Services</h1>
+    
+    <!-- Display catering data -->
+    <div id="catering-list">
+      <% caterings.forEach(catering => { %>
+        <div class="catering-item">
+          <h2><%= catering.title %></h2>
+          <p><%= catering.description %></p>
+          <p>Author: <%= catering.author %></p>
+          <!-- Display image -->
+          <img src="<%= catering.imageUrl %>" alt="<%= catering.title %> Image">
+          <!-- You can include more details here if needed -->
+          
+          <!-- Form for updating catering -->
+          <form action="/admin/update/<%= catering._id %>" method="post">
+            <input type="hidden" name="id" value="<%= catering._id %>">
+            <input type="text" name="title" placeholder="Title" value="<%= catering.title %>">
+            <input type="text" name="description" placeholder="Description" value="<%= catering.description %>">
+            <input type="text" name="imageUrl" placeholder="Image URL" value="<%= catering.imageUrl %>">
+            <input type="text" name="author" placeholder="Author" value="<%= catering.author %>">
+            <button type="submit">Update Catering</button>
+          </form>
+          
+          <!-- Form for deleting catering -->
+          <form action="/admin/delete/<%= catering._id %>" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      <% }); %>
+    </div>
+    
+    <!-- Form for adding catering -->
+    <form action="/admin/add" method="post">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="description" placeholder="Description">
+      <input type="text" name="imageUrl" placeholder="Image URL">
+      <input type="text" name="author" placeholder="Author">
+      <button type="submit">Add Catering</button>
+    </form>
+  </div>
+</body>
+</html>

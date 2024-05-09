@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Custom styles for the admin panel */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0a0a0a;
+      background-size: cover;
+      height: 100%;
+      color: #fff; /* Change text color to white */
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(10, 10, 10, 0.9); /* Change the background color and increase opacity */
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.7); /* Add transparency to input fields */
+      color: #333; /* Change text color to black */
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    .blog-card {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      color: #000; /* Change text color to black */
+    }
+
+    .photo {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .meta {
+      padding: 10px;
+    }
+
+    .details {
+      list-style: none;
+      padding: 0;
+    }
+
+    .author a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .description {
+      padding: 20px;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 600px) {
+      /* Adjustments for smaller screens */
+      .container {
+        padding: 10px;
+      }
+
+      .blog-card {
+        margin-bottom: 10px;
+      }
+
+      .photo {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Catering Services</h1>
+    <form action="/admin/add" method="post">
+      <input type="text" name="title" placeholder="Title">
+      <input type="text" name="description" placeholder="Description">
+      <input type="text" name="imageUrl" placeholder="Image URL">
+      <input type="text" name="author" placeholder="Author">
+      <button type="submit">Add Catering</button>
+    </form>
+    <hr>
+    <h2>Existing Caterings</h2>
+    <% caterings.forEach(catering => { %>
+      <div class="blog-card">
+        <div class="photo" style="background-image: url('<%= catering.imageUrl %>');"></div>
+        <div class="meta">
+          <ul class="details">
+            <li class="author"><a href="#"><%= catering.author %></a></li>
+            <li class="tags">
+          </ul>
+        </div>
+        <div class="description">
+          <h2><%= catering.title %></h2>
+          <p><%= catering.description %></p>
+          <!-- Display additional details as needed -->
+          <form action="/admin/update/<%= catering._id %>" method="post"> <!-- Fix the form action -->
+            <input type="hidden" name="id" value="<%= catering._id %>"> <!-- Add hidden input for ID -->
+            <input type="text" name="title" placeholder="Title" value="<%= catering.title %>"> <!-- Prefill title -->
+            <input type="text" name="description" placeholder="Description" value="<%= catering.description %>"> <!-- Prefill description -->
+            <input type="text" name="imageUrl" placeholder="Image URL" value="<%= catering.imageUrl %>"> <!-- Prefill image URL -->
+            <input type="text" name="author" placeholder="Author" value="<%= catering.author %>"> <!-- Prefill author -->
+            <button type="submit">Update Catering</button>
+          </form>
+          <form action="/admin/delete/<%= catering._id %>" method="post">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marriage Hall Booking</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="date"] {
+  padding: 5px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.disabled {
+  background-color: #ccc;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Marriage Hall Booking</h1>
+  <p>Select a date:</p>
+  <input type="date" id="bookingDate">
+  <button onclick="checkAvailability()">Check Availability</button>
+  <p id="availabilityMessage"></p>
+  
+  <script>
+   // server.js
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const { MongoClient } = require('mongodb');
+
+const app = express();
+const PORT = 300;
+
+// MongoDB connection string
+const MONGODB_URI = 'mongodb://localhost:27017';
+const DB_NAME = 'your_database_name';
+const COLLECTION_NAME = 'bookedDates';
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Route to check date availability
+app.get('/checkAvailability', async (req, res) => {
+  const { date } = req.query;
+
+  try {
+    const client = await MongoClient.connect(MONGODB_URI, { useUnifiedTopology: true });
+    const db = client.db(DB_NAME);
+    const collection = db.collection(COLLECTION_NAME);
+
+    const result = await collection.findOne({ date });
+
+    if (result) {
+      res.json({ available: false });
+    } else {
+      res.json({ available: true });
+    }
+
+    client.close();
+  } catch (error) {
+    console.error('Error checking date availability:', error);
+    res.status(500).json({ message: 'An error occurred. Please try again later.' });
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+
+  </script>
+</body>
+</html>

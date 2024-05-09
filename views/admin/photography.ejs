@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography Services</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Photography Services</h1>
+  
+  <!-- Display photography data -->
+  <div id="photography-list">
+    <% photography.forEach(photo => { %>
+      <div class="photo-item">
+        <h2><%= photo.title %></h2>
+        <p><%= photo.description %></p>
+        <!-- You can include more details here if needed -->
+        <form action="/admin/photography/update/<%= photo._id %>" method="post">
+          <input type="text" name="title" value="<%= photo.title %>" placeholder="Title">
+          <input type="text" name="description" value="<%= photo.description %>" placeholder="Description">
+          <button type="submit">Update</button>
+        </form>
+        <form action="/admin/photography/delete/<%= photo._id %>" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+
+  <!-- Add new photography form -->
+  <h2>Add New Photography</h2>
+  <form action="/admin/photography/add" method="post">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="description" placeholder="Description">
+    <button type="submit">Add Photography</button>
+  </form>
+</body>
+</html>

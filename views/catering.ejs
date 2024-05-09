@@ -1,0 +1,82 @@
+<!-- catering.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catering Services</title>
+  <style>
+    html {
+      height: 100%;
+      background: linear-gradient(135deg, #41403f, #b3b0b0);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    #catering-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .catering-item {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      padding: 20px;
+      max-width: 300px;
+      transition: transform 0.3s ease-in-out;
+    }
+    .catering-item:hover {
+      transform: translateY(-5px);
+    }
+    .catering-item h2 {
+      font-size: 1.5em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .catering-item p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+    .catering-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Catering Services</h1>
+    
+    <!-- Display catering data -->
+    <div id="catering-list">
+      <% caterings.forEach(catering => { %>
+        <div class="catering-item">
+          <h2><%= catering.title %></h2>
+          <p><%= catering.description %></p>
+          <p>Author: <%= catering.author %></p>
+          <!-- Display image -->
+          <img src="<%= catering.imageUrl %>" alt="<%= catering.title %> Image">
+          <!-- You can include more details here if needed -->
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>

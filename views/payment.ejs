@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Confirm Booking</h2>
+        <div>
+            <p>Name: <%= bookingData.name %></p>
+            <p>Email: <%= bookingData.email %></p>
+            <p>Phone Number: <%= bookingData.phone %></p>
+            <p>Date: <%= bookingData.date %></p>
+            <p>Services: <%= bookingData.service.join(', ') %></p>
+            <p>Advance Amount: <%= bookingData.advance %></p>
+        </div>
+        <form action="/confirm" method="POST">
+            <div class="form-group">
+                <label for="paymentMethod">Select Payment Method:</label>
+                <select class="form-control" id="paymentMethod" name="paymentMethod" required>
+                    <option value="gpay">Google Pay</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="credit">Credit Card</option>
+                </select>
+            </div>
+            <div id="cardDetails" style="display: none;">
+                <div class="form-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber">
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" class="form-control" id="expiryDate" name="expiryDate">
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Proceed to Confirm</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            if (this.value === 'debit' || this.value === 'credit') {
+                document.getElementById('cardDetails').style.display = 'block';
+            } else {
+                document.getElementById('cardDetails').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

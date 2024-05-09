@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Page</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-logo">
+     <img src="logo1.png" alt="Logo">
+     <p>Kaithamalai Marriage Hall</p>
+  </div>
+  <ul class="nav-menu">
+     <li><a class="nav-menu" href="#home">Home</a></li>
+     <li><a class="nav-menu" href="#about">About</a></li>
+     <li><a class="nav-menu" href="#service">Service</a></li>
+     <li><a class="nav-menu" href="#gallery">Gallery</a></li>
+     <li><a class="nav-menu" href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-login">
+     <button type="submit" onclick="navigateToPage()">Login </button>
+     <img src="login.png" alt="Login">
+  </div>
+</div>
+
+<!-- Home Section -->
+<section id="home">
+  <div id="hero" class="container-fluid">
+    <div class="hero-content">
+      <h2>Wedding in Your Way</h2>
+      <div class="heart">
+        <img src="heart.png" alt="heart">
+      </div>
+      <p>The best is Yet to come</p>
+      <button class="btn btn-primary" onclick="navigateToPayment()">Book Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="about-wrapper container">
+    <div class="about-text">
+      <h1>About Us</h1>
+      <h2>Your Satisfaction is our joy</h2>
+      <p>
+        Established in the year 2013, "KAITHAMALAI MAHAL" is one of the pioneering organizations
+        dedicated to providing exceptional event hosting services, specializing in wedding hall bookings.
+         With a keen understanding of various event requirements and a commitment to excellence, 
+         we strive to meet the needs of couples and families seeking the perfect venue for their special day.
+      </p>
+    </div>
+    <div class="about-img">
+      <img src="https://t4.ftcdn.net/jpg/06/35/08/91/360_F_635089195_fYH8B50BYiYSylu8GRcqpTXhNHyGM51B.jpg" alt="food" />
+    </div>
+  </div>
+</section>
+
+<!-- Service Section -->
+<section id="service" style="background-color: black;">
+  <div class="container">
+    <h1 style="text-align: center;color: rgb(245, 240, 240);font-size: 10vh;font-style: italic;">Services</h1>
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+          <div class="service-box" id="serviceBox1">
+              <div class="service-icon yellow">
+                  <div class="front-content">
+                      <i class="	fa fa-cutlery"></i>
+                      <h3>Catering</h3>
+                  </div>
+              </div>
+              <div class="service-content">
+                  <!-- <h3>design</h3>
+                  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p> -->
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+          <div class="service-box" id="serviceBox2">
+              <div class="service-icon orange">
+                  <div class="front-content">
+                      <i class="	fa fa-hotel"></i>
+                      <h3>Rooms</h3>
+                  </div>
+              </div>
+              <div class="service-content">
+                  <!-- <h3>php developer</h3>
+                  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p> -->
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+          <div class="service-box" id="serviceBox3">
+              <div class="service-icon red">
+                  <div class="front-content">
+                      <i class="	fa fa-camera-retro"></i>
+                      <h3>Photography</h3>
+                  </div>
+                 </div>
+              <div class="service-content">
+                  <!-- <h3>Developer</h3>
+                  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p> -->
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+          <div class="service-box" id="serviceBox4">
+              <div class="service-icon grey">
+                <i class="fas fa-seedling"></i>
+                  <div class="front-content">
+                      <h3>Decoration</h3>
+                  </div>
+              </div>
+            <div class="service-content">
+                  <!-- <h3>java script</h3>
+                  <p>No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure</p> -->
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" style="background-color: black;">
+  <div class="container-fluid">
+    <div class="gallery-wrap">
+      <div class="item item-1"></div>
+      <div class="item item-2"></div>
+      <div class="item item-3"></div>
+      <div class="item item-4"></div>
+      <div class="item item-5"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="contact-container container">
+    <div class="contact-img">
+        <img src="https://e1.pxfuel.com/desktop-wallpaper/4/702/desktop-wallpaper-wedding-hall-decoration-1600x1200-for-your-mobile-tablet-marriage-hall.jpg" alt="" />
+    </div>
+
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <div class="wrapper">
+            <div id="error_message"></div>
+            <form action="" id="myform" onsubmit="return FormValidation.validate()">
+                <div class="input_field">
+                    <input type="text" placeholder="Your Name" id="name">
+                </div>
+                <div class="input_field">
+                    <input type="text" placeholder="Subject" id="subject">
+                </div>
+                <div class="input_field">
+                    <input type="text" placeholder="Phone" id="phone">
+                </div>
+                <div class="input_field">
+                    <input type="text" placeholder="Email" id="email">
+                </div>
+                <div class="input_field">
+                    <textarea placeholder="Message" id="message"></textarea>
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+</section>
+
+<div class="social">
+  <a href="https://twitter.com/StefCharle" target="_blank">
+    <!-- <img src="https://e1.pxfuel.com/desktop-wallpaper/4/702/desktop-wallpaper-wedding-hall-decoration-1600x1200-for-your-mobile-tablet-marriage-hall.jpg" alt=""> -->
+  </a>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function navigateToPage() {
+      // Change window location to the login route
+      window.location.href = "/auth/login";
+  }
+  function navigateToPayment() {
+      // Change window location to the payment route
+      window.location.href = "/booking";
+  }
+</script>
+
+<!-- Custom JS -->
+<script src="script.js"></script>
+<script src="contact.js"></script>
+
+<script>
+  function toggleCalendar() {
+      var calendar = document.getElementById("calendar");
+      if (calendar.style.display === "none") {
+          calendar.style.display = "block";
+      } else {
+          calendar.style.display = "none";
+      }
+  }
+
+  function fetchBookedDates() {
+      return fetch('/booking/dates')
+          .then(response => response.json())
+          .then(data => data.map(date => new Date(date).toISOString().split('T')[0]))
+          .catch(error => console.error('Error fetching booked dates:', error));
+  }
+
+  async function checkAvailability() {
+      var selectedDate = document.getElementById("calendarInput").value;
+      var message = "";
+
+      if (!selectedDate) {
+          message = "Please select a date";
+      } else {
+          const bookedDates = await fetchBookedDates();
+          if (bookedDates.includes(selectedDate)) {
+              message = "Date is unavailable";
+          } else {
+              message = "Date is available";
+          }
+      }
+
+      document.getElementById("availabilityMessage").textContent = message;
+  }
+</script>
+</body>
+</html>

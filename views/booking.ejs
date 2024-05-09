@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://cdn0.hitched.co.uk/vendor/8151/3_2/960/jpg/palazzo-borg-20190319092329787.jpeg'); /* Add your background image URL */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add this style to your existing CSS */
+        input[type="date"].booked-date {
+            border-color: red; /* Change the border color to red */
+            background-color: #ffe6e6; /* Add a light red background */
+        }
+
+        /* Add this style to make the background slightly transparent */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Book Now</h2>
+        <form action="/payment" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+                <span id="dateStatus"></span> <!-- Add a span to display date status -->
+            </div>
+            
+        
+            <div class="form-group">
+                <label>Select Service:</label><br>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="catering" name="service" value="catering">
+                    <label class="form-check-label" for="catering">Catering</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="halls" name="service" value="halls">
+                    <label class="form-check-label" for="halls">Halls</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rooms" name="service" value="rooms">
+                    <label class="form-check-label" for="rooms">Rooms</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="decoration" name="service" value="decoration">
+                    <label class="form-check-label" for="decoration">Decoration</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="photography" name="service" value="photography">
+                    <label class="form-check-label" for="photography">Photography</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="advance">Advance Amount:</label>
+                <input type="number" class="form-control" id="advance" name="advance" min="5000" max="50000" step="5000" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional, for certain Bootstrap features) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Fetch booked dates from the server
+        // Fetch booked dates from the server
+fetch('/booking/dates')
+    .then(response => response.json())
+    .then(data => {
+        const bookedDates = data.map(date => new Date(date).toISOString().split('T')[0]);
+        const dateInput = document.getElementById('date');
+        const dateStatus = document.getElementById('dateStatus'); // Get the date status span
+        dateInput.addEventListener('input', () => {
+            const selectedDate = dateInput.value;
+            const isBooked = bookedDates.includes(selectedDate);
+            if (isBooked) {
+                dateInput.classList.add('booked-date');
+                dateStatus.textContent = "Unavailable"; // Set status to unavailable
+            } else {
+                dateInput.classList.remove('booked-date');
+                dateStatus.textContent = ""; // Clear status
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching booked dates:', error);
+    });
+
+    </script>
+    <script>
+        // Set the value of the hidden input field to the email provided by the user
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('hiddenEmail').value = this.value;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- photography.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography</title>
+  <!-- Add any additional stylesheets or scripts if needed -->
+</head>
+<body>
+  <h1>Photography</h1>
+  <!-- Display photography data -->
+  <div id="photography-list">
+    <% photography.forEach(photo => { %>
+      <div class="photo-item">
+        <img src="<%= photo.imageUrl %>" alt="<%= photo.title %>">
+        <p><%= photo.description %></p>
+        <!-- Display additional details as needed -->
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

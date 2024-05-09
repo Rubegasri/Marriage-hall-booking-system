@@ -1,0 +1,23 @@
+<!-- decorations.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decorations</title>
+  <!-- Add any additional stylesheets or scripts if needed -->
+</head>
+<body>
+  <h1>Decorations</h1>
+  <!-- Display decorations data -->
+  <div id="decorations-list">
+    <% decorations.forEach(decoration => { %>
+      <div class="decoration-item">
+        <h2><%= decoration.name %></h2>
+        <p>Description: <%= decoration.description %></p>
+        <!-- Display additional details as needed -->
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

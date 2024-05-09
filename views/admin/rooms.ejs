@@ -1,0 +1,37 @@
+<!-- rooms.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Rooms</h1>
+  
+  <!-- Display room data -->
+  <div id="room-list">
+    <% rooms.forEach(room => { %>
+      <div class="room-item">
+        <h2><%= room.title %></h2>
+        <p><%= room.description %></p>
+        <p>Author: <%= room.author %></p>
+        <!-- Display image -->
+        <img src="<%= room.imageUrl %>" alt="<%= room.title %> Image">
+        <!-- You can include more details here if needed -->
+        <form action="/admin/room/update/<%= room._id %>" method="post">
+          <input type="text" name="title" value="<%= room.title %>" placeholder="Title">
+          <input type="text" name="description" value="<%= room.description %>" placeholder="Description">
+          <input type="text" name="imageUrl" value="<%= room.imageUrl %>" placeholder="Image URL">
+          <input type="text" name="author" value="<%= room.author %>" placeholder="Author">
+          <button type="submit">Update</button>
+        </form>
+        <form action="/admin/room/delete/<%= room._id %>" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

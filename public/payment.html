@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #b30003;
+        }
+
+        .booked-date {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <h2>Book Now</h2>
+        <form action="/payment" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+        
+            <div class="form-group">
+                <label>Select Service:</label><br>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="catering" name="service" value="catering">
+                    <label class="form-check-label" for="catering">Catering</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="halls" name="service" value="halls">
+                    <label class="form-check-label" for="halls">Halls</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rooms" name="service" value="rooms">
+                    <label class="form-check-label" for="rooms">Rooms</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="decoration" name="service" value="decoration">
+                    <label class="form-check-label" for="decoration">Decoration</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="photography" name="service" value="photography">
+                    <label class="form-check-label" for="photography">Photography</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="advance">Advance Amount:</label>
+                <input type="number" class="form-control" id="advance" name="advance" min="5000" max="50000" step="5000" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <h2>Booked Dates:</h2>
+    <ul>
+        <% for(let i = 0; i < bookedDates.length; i++) { %>
+            <li class="booked"><%= new Date(bookedDates[i]).toLocaleDateString() %></li>
+        <% } %>
+    </ul>
+
+    <!-- Bootstrap JS (optional, for certain Bootstrap features) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Fetch booked dates from the server
+        fetch('/booking/dates')
+            .then(response => response.json())
+            .then(data => {
+                const bookedDates = data.map(date => new Date(date).toISOString().split('T')[0]);
+                const dateInput = document.getElementById('date');
+                dateInput.addEventListener('input', () => {
+                    const selectedDate = dateInput.value;
+                    const isBooked = bookedDates.includes(selectedDate);
+                    if (isBooked) {
+                        dateInput.classList.add('booked-date');
+                    } else {
+                        dateInput.classList.remove('booked-date');
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching booked dates:', error);
+            });
+    </script>
+</body>
+</html>

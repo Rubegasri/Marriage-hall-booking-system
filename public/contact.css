@@ -1,0 +1,82 @@
+/* ........ Contact Us........... */
+
+#contact {
+   padding: 5rem 0;
+   background: #060606;
+}
+ 
+.contact-container {
+   display: flex;
+   background: #060606;
+}
+ 
+.contact-img {
+   width: 50%;
+}
+ 
+.contact-img img {
+   display: block;
+   height: 400px;
+   width: 100%;
+   object-position: center;
+   object-fit: cover;
+}
+ 
+.form-container {
+   padding: 1rem;
+   width: 50%;
+   margin: auto;
+   background-color: #060606;
+   color: #edebeb; /* added text color */
+}
+ 
+.form-container input, 
+.form-container textarea {
+   display: block;
+   width: calc(100% - 20px); /* adjusted width */
+   border: none;
+   border-bottom: 2px solid #ddd;
+   padding: 1rem 0;
+   box-shadow: none;
+   outline: none;
+   margin-bottom: 1rem;
+   color: #edebeb;
+   font-weight: 500;
+   background: transparent; /* added background */
+}
+ 
+.form-container input[type="submit"] {
+   width: auto; /* adjusted width */
+   background-color: #007bff; /* added background color */
+   color: #fff; /* added text color */
+   padding: 0.5rem 1.5rem; /* adjusted padding */
+   cursor: pointer;
+   border: none;
+   transition: background-color 0.3s ease-in-out;
+}
+ 
+.form-container input[type="submit"]:hover {
+   background-color: #0056b3; /* adjusted hover color */
+}
+ 
+.form-container textarea {
+   border-bottom: 2px solid #ddd;
+   resize: none;
+}
+ 
+.form-container h2 {
+   font-size: 2.7rem;
+   font-weight: 500;
+   color: #f8f3f3;
+   margin-bottom: 1rem;
+   margin-top: -1.2rem;
+}
+ 
+#footer h2 {
+   text-align: center;
+   font-size: 1.8rem;
+   padding: 2.6rem;
+   font-weight: 500;
+   color: #fff;
+   background: rgb(65, 65, 65);
+}
